@@ -1,0 +1,89 @@
+buildscript {
+	repositories {
+		maven {
+			url "https://maven.aliyun.com/repository/public"
+		}
+	}
+	dependencies {
+		classpath "org.springframework.boot:spring-boot-gradle-plugin:2.7.6"
+	}
+}
+
+allprojects {
+	group = 'com.github'
+	version = '0.0.1-SNAPSHOT'
+}
+
+ext {
+	libraries = [
+			problemSpringWebStarterVersion = '0.27.0',
+			hutoolAllVersion = "5.8.5",
+			jjwtVersion = "0.11.5",
+			reflectionsVersion = "0.10.2",
+			wxJavaVersion = "4.4.0",
+			queryDslVersion = "5.0.0",
+			zxingVersion = "3.3.3"
+	]
+}
+
+subprojects {
+	if (it.name != 'czsurvey-extra') {
+		apply plugin: 'org.springframework.boot'
+		apply plugin: 'io.spring.dependency-management'
+		apply plugin: 'java'
+		apply plugin: 'java-library'
+
+		repositories {
+			mavenLocal()
+			maven {
+				url "https://maven.aliyun.com/repository/public"
+			}
+			mavenCentral()
+		}
+
+		sourceCompatibility = '17'
+		targetCompatibility = "17"
+
+		configurations {
+			compileOnly {
+				extendsFrom annotationProcessor
+			}
+		}
+
+		dependencyManagement {
+			dependencies {
+				dependency "org.zalando:problem-spring-web-starter:${problemSpringWebStarterVersion}"
+				dependency "cn.hutool:hutool-all:${hutoolAllVersion}"
+				dependency "io.jsonwebtoken:jjwt-api:${jjwtVersion}"
+				dependency "io.jsonwebtoken:jjwt-impl:${jjwtVersion}"
+				dependency "io.jsonwebtoken:jjwt-jackson:${jjwtVersion}"
+				dependency "org.reflections:reflections:${reflectionsVersion}"
+				dependency "com.github.binarywang:wx-java-mp-spring-boot-starter:${wxJavaVersion}"
+				dependency "com.google.zxing:core:${zxingVersion}"
+			}
+		}
+
+		dependencies {
+			annotationProcessor 'org.projectlombok:lombok'
+			annotationProcessor "org.springframework.boot:spring-boot-configuration-processor"
+
+			implementation("com.querydsl:querydsl-jpa:${queryDslVersion}")
+			annotationProcessor 'javax.annotation:javax.annotation-api'
+			annotationProcessor 'com.querydsl:querydsl-apt:5.0.0:jpa'
+			annotationProcessor 'javax.persistence:javax.persistence-api'
+
+			implementation 'com.fasterxml.jackson.datatype:jackson-datatype-jsr310'
+		}
+
+		tasks.named('test') {
+			useJUnitPlatform()
+		}
+
+		if (it.name != 'czsurvey-web') {
+			bootJar {
+				enabled = false
+			}
+		}
+	}
+}
+

@@ -1,0 +1,3 @@
+com.github.czsurvey.project.config.JpaConfiguration
+com.github.czsurvey.project.config.ProjectConfiguration
+com.github.czsurvey.project.config.WxMpConfiguration

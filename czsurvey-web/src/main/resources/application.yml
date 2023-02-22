@@ -1,0 +1,45 @@
+server:
+  port: 7666
+spring:
+  application:
+    name: CZSurvey
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/czsurvey?useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai
+    username: root
+    password: 123456
+  redis:
+    host: localhost
+    port: 6379
+  jpa:
+    show-sql: true
+
+  thymeleaf:
+    prefix: classpath:/templates
+    suffix: .html
+    cache: false
+
+wx:
+  mp:
+    appId: 123456
+    secret: 123456
+    token: 123456
+    config-storage:
+      type: RedisTemplate
+
+application:
+  token:
+    secret: 'qYeL7s5CFFQ5THB3HY56JwzXlwyxcDM+u4umeEWwAJE='
+  security:
+    ignore-urls:
+      urls:
+        - '/api/login'
+        - '/api/project/**'
+        - '/api/wx/login/**'
+        - '/api/wx/qrcode/login'
+        - '/api/wx/web/login'
+        - '/api/wx/publicAccount/login/**'
+        - '/api/wx/mp/**'
+        - 'GET:/api/survey/detail'
+        - '/api/survey/answerState/**'
+        - 'POST:/api/survey/answer'

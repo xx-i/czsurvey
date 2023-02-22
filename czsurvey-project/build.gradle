@@ -1,0 +1,5 @@
+dependencies {
+    api project(':czsurvey-extra:czsurvey-extra-security')
+    api 'com.github.binarywang:wx-java-mp-spring-boot-starter'
+    api 'com.google.zxing:core'
+}

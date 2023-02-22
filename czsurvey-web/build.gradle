@@ -1,0 +1,6 @@
+dependencies {
+    implementation 'mysql:mysql-connector-java'
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    implementation project(':czsurvey-project')
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}

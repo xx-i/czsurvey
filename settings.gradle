@@ -1,0 +1,12 @@
+rootProject.name = 'czsurvey'
+include 'czsurvey-common'
+include 'czsurvey-extra'
+include 'czsurvey-project'
+include 'czsurvey-web'
+include 'czsurvey-extra:czsurvey-extra-security'
+findProject(':czsurvey-extra:czsurvey-extra-security')?.name = 'czsurvey-extra-security'
+include 'czsurvey-extra:czsurvey-extra-data'
+findProject(':czsurvey-extra:czsurvey-extra-data')?.name = 'czsurvey-extra-data'
+include 'czsurvey-extra:czsurvey-extrea-log'
+findProject(':czsurvey-extra:czsurvey-extrea-log')?.name = 'czsurvey-extrea-log'
+

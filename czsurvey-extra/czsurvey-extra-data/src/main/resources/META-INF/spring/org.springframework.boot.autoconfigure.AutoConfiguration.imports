@@ -1,0 +1,2 @@
+com.github.czsurvey.extra.data.cache.RedisTemplateConfiguration
+com.github.czsurvey.extra.data.jackson.JacksonConfiguration

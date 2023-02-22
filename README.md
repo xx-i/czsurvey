@@ -6,6 +6,8 @@
 
 演示地址: [http://czsurvey.mzgx.net](http://czsurvey.mzgx.net)(暂时先用这个地址，后续会换)
 
+**这个是后端的仓库，前端的仓库请 [点击这里](https://gitee.com/xx-i/czsurvey-ui)**
+
 #### 后端使用到的技术： 
 > Spring Boot  
 > Spring Security  
@@ -20,7 +22,7 @@
 > jdk17  
 > gradle  
 > redis  
-> mysql8以上版本（必须，用到了jsonTable） 
+> mysql8以上版本 
 
 
 这个项目的前端和后端都还没做完，如果演示过程中遇到点不动的按钮，那就说明这个功能还没做😂
